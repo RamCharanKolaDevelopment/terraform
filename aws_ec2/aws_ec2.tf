@@ -1,9 +1,10 @@
 resource "aws_instance" "example" {
   ami           = "ami-0220d79f3f480ecf5"
   instance_type = "t3.micro"
+  vpc_security_group_ids = [aws_security_group.allow_tls.id] # creating aws security group & applying to instance going to create.
 
   tags = {
-    Name = "terraform" # This "Name" tag is a reserve word in aws, so that EC2 instance will be created with name "terraform"
+    Name = "roboshop" # This "Name" tag is a reserve word in aws, so that EC2 instance will be created with name "terraform"
     Project = "roboshop"
   }
 }
